@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css}"/>
+  <title>Document</title>
+</head>
+  <body>
+
+    <div class="container-fluid">
+      <h1 class="text-center">Cadastro</h1>
+      <p class="text-danger" th:text="| HOJE É ${today}">Hoje</p>
+      <hr>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead bgcolor="green" style="color:white">
+            <tr>
+              <th>Controles</th>
+              <th>Id Produto</th>
+              <th>Descrição Produto</th>
+              <th>Produto Checado</th>
+              <th>Data Cadastro</th>
+              <th>Data Atualização</th>
+            <tr>
+          <thead>
+            <tbody>
+              <tr th:each="item:${todosItem}" th:class="${item.complete}?success:warning">
+                <td>
+                  <div class="btn btn-group-sm" role="group">
+                    <a class="btn btn-warning" th:href="@{/edit/{id}(id=${item.id})}">Editar</a>
+                    <a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.id})}">Deletar</a>
+                  </div>
+
+                </td>
+                <td th:text="${item.id}">Produto id</td>
+                <td th:text="${item.description}">Produto descricao</td>
+                <td th:text="${item.complete}">Produto completo</td>
+                <td th:text="${item.createdDate}">Produto Cadastro</td>
+                <td th:text="${item.modifiedDate}">Produto Modificacao</td>
+              </tr>
+            </tbody>
+        </table>
+
+        <p><a class="btn btn-success" href="/create-todo">Cadastrar Produto</a></p>
+      </div>
+      <hr/>
+    </div>
+    <script th:src="@{/webjars/jquery/3.6.0/css/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+  </body>
+</html>

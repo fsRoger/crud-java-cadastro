@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css}"/>
+  <title>Document</title>
+</head>
+
+  <body>
+    <div class="container">
+      <div class="col-md-6">
+        <h1>Cadastrar Novo Produto</h1>
+        <form action="#" th:action="@{/todo}" th:object="${toItem}" method="POST">
+          <div class="form-group">
+            <label for="description">Descrição</label>
+            <input class="form-control" type="text" th:field="*{description}" id="description" placeholder="Digite a descrição do produto">
+            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+          </div>
+
+          <button type="submit" class="btn btn-success">Cadastrar Produto</button>
+        </form>
+      </div>
+    </div>
+    <script th:src="@{/webjars/jquery/3.6.0/css/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+  </body>
+</html>
